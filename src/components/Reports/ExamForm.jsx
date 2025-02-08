@@ -35,49 +35,55 @@ const ExamForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-6 rounded-lg shadow-md mb-4 space-y-4"
+      className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-6"
     >
-      <h3 className="text-xl font-semibold mb-4">Add Examination</h3>
-      <input
-        type="text"
-        name="name"
-        value={examData.name}
-        onChange={handleChange}
-        placeholder="Examination Name"
-        required
-        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-      />
-      <input
-        type="text"
-        name="course"
-        value={examData.course}
-        onChange={handleChange}
-        placeholder="Course"
-        required
-        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-      />
-      <input
-        type="date"
-        name="date"
-        value={examData.date}
-        onChange={handleChange}
-        required
-        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-      />
-      <input
-        type="number"
-        name="totalStudents"
-        value={examData.totalStudents}
-        onChange={handleChange}
-        placeholder="Total Students"
-        required
-        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-      />
+      <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center">
+        📝 Add Examination
+      </h3>
+
+      <div className="space-y-4">
+        <input
+          type="text"
+          name="name"
+          value={examData.name}
+          onChange={handleChange}
+          placeholder="Examination Name"
+          required
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        />
+        <input
+          type="text"
+          name="course"
+          value={examData.course}
+          onChange={handleChange}
+          placeholder="Course"
+          required
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        />
+        <input
+          type="date"
+          name="date"
+          value={examData.date}
+          onChange={handleChange}
+          required
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        />
+        <input
+          type="number"
+          name="totalStudents"
+          value={examData.totalStudents}
+          onChange={handleChange}
+          placeholder="Total Students"
+          required
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        />
+      </div>
+
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
+        className="w-full mt-4 bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md"
       >
-        Submit
+        Submit Examination
       </button>
     </form>
   );

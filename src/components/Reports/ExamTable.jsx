@@ -5,33 +5,43 @@ const ExamTable = () => {
   const exams = useExamStore((state) => state.exams);
 
   return (
-    <div className="p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-xl font-semibold mb-4">Examinations</h2>
+    <div className="p-6 bg-white shadow-lg rounded-lg w-full max-w-4xl mx-auto mt-6">
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">
+        📚 Examinations
+      </h2>
+
       {exams.length === 0 ? (
-        <p className="text-gray-500">No exams added yet.</p>
+        <p className="text-gray-500 text-center">No exams added yet.</p>
       ) : (
-        <table className="w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100 text-center">
-              <th className="border p-2">ID</th>
-              <th className="border p-2">Exam Name</th>
-              <th className="border p-2">Course</th>
-              <th className="border p-2">Date</th>
-              <th className="border p-2">Total Students</th>
-            </tr>
-          </thead>
-          <tbody>
-            {exams.map((exam) => (
-              <tr key={exam.id} className="text-center">
-                <td className="border p-2">{exam.id}</td>
-                <td className="border p-2">{exam.name}</td>
-                <td className="border p-2">{exam.course}</td>
-                <td className="border p-2">{exam.date}</td>
-                <td className="border p-2">{exam.totalStudents}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-300 rounded-lg shadow-md">
+            <thead>
+              <tr className="bg-blue-600 text-white text-center">
+                <th className="border p-3">ID</th>
+                <th className="border p-3">Exam Name</th>
+                <th className="border p-3">Course</th>
+                <th className="border p-3">Date</th>
+                <th className="border p-3">Total Students</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {exams.map((exam, index) => (
+                <tr
+                  key={exam.id}
+                  className={`text-center ${
+                    index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  } hover:bg-gray-100 transition`}
+                >
+                  <td className="border p-3">{exam.id}</td>
+                  <td className="border p-3">{exam.name}</td>
+                  <td className="border p-3">{exam.course}</td>
+                  <td className="border p-3">{exam.date}</td>
+                  <td className="border p-3">{exam.totalStudents}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
