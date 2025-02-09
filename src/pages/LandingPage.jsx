@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-50 to-blue-100 text-gray-900 px-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-50 to-blue-100 text-gray-900 px-6 pt-4">
       {/* Hero Section */}
       <div className="text-center max-w-3xl">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 leading-tight">

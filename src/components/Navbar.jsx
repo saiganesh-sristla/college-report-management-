@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa"; // Import icons for mobile menu
+import useAuthStore from "../store/useAuthStore";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout(); // Clear authentication state
+    navigate("/admin-login"); // Redirect to login page
+  };
+
 
   return (
     <nav className="bg-gray-900 text-white shadow-md">
@@ -14,7 +23,7 @@ const Navbar = () => {
         </h1>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-8 text-lg font-medium">
+        <div className="hidden md:flex gap-8 text-lg font-medium items-center">
           <Link to="/dashboard" className="hover:text-blue-400 transition">
             Dashboard
           </Link>
@@ -24,6 +33,14 @@ const Navbar = () => {
           <Link to="/examinations" className="hover:text-blue-400 transition">
             Examinations
           </Link>
+          {isAuthenticated && (
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 transition"
+          >
+            Logout
+          </button>
+        )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -56,6 +73,14 @@ const Navbar = () => {
           >
             Examinations
           </Link>
+          {isAuthenticated && (
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 transition"
+          >
+            Logout
+          </button>
+        )}
         </div>
       )}
     </nav>

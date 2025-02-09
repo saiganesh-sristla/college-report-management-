@@ -5,7 +5,7 @@ import ReportTable from "../components/Reports/ReportTable";
 const Reports = () => {
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Reports Section</h2>
+      <h1 className="text-3xl font-semibold mb-6">📝 Reports</h1>
       <ReportForm />
       <ReportTable />
     </div>
