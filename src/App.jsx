@@ -6,13 +6,17 @@ import Reports from "./pages/Reports";
 import Examinations from "./pages/Examinations";
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
+import LandingPage from "./pages/LandingPage";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <Routes>
-        <Route path="/" element={<AdminLogin />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<AdminLogin/>}/>
         <Route
           path="/dashboard"
           element={

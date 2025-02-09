@@ -10,15 +10,37 @@ const ReportTable = () => {
       alert("No file available!");
       return;
     }
-
-    const link = document.createElement("a");
-    const blob = new Blob([atob(fileData.split(",")[1])], { type: "application/octet-stream" });
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName || "downloaded_file";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  
+    try {
+      // Extract Base64 content (after the comma in "data:application/pdf;base64,...")
+      const base64Data = fileData.split(",")[1];
+  
+      // Convert Base64 to raw binary data
+      const byteCharacters = atob(base64Data);
+      const byteNumbers = new Uint8Array(byteCharacters.length);
+  
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+  
+      // Create a Blob with the correct MIME type
+      const fileType = fileData.split(";")[0].split(":")[1] || "application/octet-stream";
+      const blob = new Blob([byteNumbers], { type: fileType });
+  
+      // Create a download link
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = fileName || "downloaded_file";
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading file:", error);
+      alert("Error processing the file!");
+    }
   };
+  
 
   const exportCSV = () => {
     const csvContent =

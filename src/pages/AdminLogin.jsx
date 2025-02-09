@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -17,10 +19,26 @@ const AdminLogin = () => {
     const isSuccess = login(credentials.email, credentials.password);
 
     if (isSuccess) {
-      alert("Login successful!");
-      navigate("/dashboard"); // Redirect to dashboard after login
+      toast.success("✅ Login successful!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "colored",
+      });
+      setTimeout(() => navigate("/dashboard"), 2000);
     } else {
-      alert("Invalid credentials. Please try again.");
+      toast.error("❌ Invalid credentials. try again.", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "colored",
+      });
     }
   };
 
